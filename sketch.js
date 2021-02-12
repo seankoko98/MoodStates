@@ -9,10 +9,6 @@
 	* Shows use of subdirectories
 	
 */
-import calm from "./assets/calm.png"
-import cheerful from "./assets/cheerful.png"
-import comforting from "./assets/comforting.png"
-
 // Global variable that we will use in all the functions
 var img; 
 
@@ -22,7 +18,7 @@ setup();
 // preload() will execture before setup()
 function preload() {
   	print("SimpleImageDisplay: preload()");
-  	let imgs = ['assets/figure16.png', calm, cheerful, comforting].map(imgUrl => loadImage(imgUrl)); // Load the image
+  	let imgs = ['assets/figure16.png',"./assets/calm.png", "./assets/cheerful.png", "./assets/comforting.png"].map(imgUrl => loadImage(imgUrl)); // Load the image
   	return imgs
 }
 
@@ -45,15 +41,5 @@ function draw(imgs = []) {
 		
   	// Displays the image at center point - add param 3 and 4 fo width and height
   	imgs.forEach(img => image(img, width/2, height/2));
-}
-
-function iter(list){
-	for (let item of list) {
-		console.log(item)
-	}
-
-	for (let i = 0; i < list.length; i++) {
-		console.log(list[i])
-	}
 }
 
