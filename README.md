@@ -1,9 +1,9 @@
-## Simple State Machine
-#### by Scott Kildall
+## Mood States
+#### by Sean Ko
 
 
 ### Overview
-This is a template for a simple state machine that goes between five states
+This is a simple state machine that goes between 5 mood states 
 
 
 ### Modifying the Template
