@@ -59,13 +59,13 @@ function preload() {
 
 
 function loadInstructionsArray() {
-  instructions[0] = "Press 1 for Angry!"; 
-  instructions[1] = "Press 2 for Calm"; 
-  instructions[2] = "Press 3 for Happy :)"; 
-  instructions[3] = "Press 4 for Sad :(";
-  instructions[4] = "Press 5 for Scared"
-  instructions[5] = "Press s for a splash of bubbles!"; 
-  instructions[6] = "When on the bubble screen click to get the instructions screen or press i"; 
+  instructions[0] = "Press 1 for relaxing"; 
+  instructions[1] = "Press 2 for enlightening"; 
+  instructions[2] = "Press 3 for calm"; 
+  instructions[3] = "Press 4 for cheerful";
+  instructions[4] = "Press 5 for comforting"
+  instructions[5] = "Press s for the mood states splash screen"; 
+  instructions[6] = "When on the splash screen click to get the instructions screen or press i"; 
 }
 
 // Center drawing, drawFunction will be one for default
@@ -173,6 +173,9 @@ function keyTyped() {
   }
   else if( key == 's') {
     drawFunction = drawSplash; 
+  }
+  else if( key == 'i'){
+  	drawFunction = drawInstructions;
   }
 }
 
