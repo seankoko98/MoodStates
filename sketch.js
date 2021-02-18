@@ -47,6 +47,7 @@ function preload() {
   images[2] = loadImage('assets/three.png');
   images[3] = loadImage('assets/four.png');
   images[4] = loadImage('assets/five.png');
+  images[5] = loadImage('assets/splash.png');
 }
 
 // Center drawing, drawFunction will be one for default
@@ -112,6 +113,44 @@ drawFive = function() {
    text("comforting", width/2, height - gTextOffset);
 }
 
+//-- drawSplash() will draw the image at index 4 from the array
+drawSplash = function() {
+   image(images[5],width/2, height/2);
+}
+
+// Change the drawFunction variable based on your interaction
+function keyTyped() {
+  if( drawFunction === drawSplash ) {
+    return;
+  }
+
+  if( key === '1' ) {
+  	drawFunction = drawOne;
+  }
+  else if( key === '2' ) {
+  	drawFunction = drawTwo;
+  }
+  else if( key === '3' ) {
+  	drawFunction = drawThree;
+  }
+  else if( key === '4' ) {
+  	drawFunction = drawFour;
+  }
+  else if( key === '5' ) {
+  	drawFunction = drawFive;
+  }
+
+  else if( key === 's' ) {
+    drawFunction = drawSplash;
+  }
+}
+
+function mousePressed() {
+  // only change state if we are in splash screen
+  if( drawFunction === drawSplash ) {
+    drawFunction = drawOne;
+  }
+}
 
 //========= TEMPLATE: add or change interface functions, as you like =========
 
