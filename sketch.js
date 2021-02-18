@@ -33,6 +33,15 @@
 
 // Array of images
 var images = [];
+// array of functions
+var functions = [];
+// Array of instructions 
+var instructions = []; 
+
+// variables used for instructions 
+var midX; 
+var startY;
+var lineHeight = 48;
 
 // variable that is a function 
 var drawFunction;
@@ -50,9 +59,35 @@ function preload() {
   images[5] = loadImage('assets/splash.png');
 }
 
+function loadFunctionsArray() {
+  functions[0] = drawOne; 
+  functions[1] = drawTwo; 
+  functions[2] = drawThree; 
+  functions[3] = drawFour; 
+  functions[4] = drawFive; 
+  functions[5] = drawSplash; 
+  functions[6] = drawInstructions; 
+}
+
+function loadInstructionsArray() {
+  instructions[0] = "Press 1 for relaxing"; 
+  instructions[1] = "Press 2 for enlightened;                                                                                                      
+  instructions[2] = "Press 3 for calming"; 
+  instructions[3] = "Press 4 for cheerful";
+  instructions[4] = "Press 5 for comforting"
+  instructions[5] = "Press s for a splash of bubbles!"; 
+  instructions[6] = "When on the bubble screen click to get the instructions screen or press i"; 
+}
+
 // Center drawing, drawFunction will be one for default
 function setup() {
   createCanvas(windowWidth, windowHeight);
+// loading all arrays 
+  loadFunctionsArray(); 
+  loadInstructionsArray(); 
+
+  midX = width/2;
+  startY = 60;
 
   // Center our drawing objects
   imageMode(CENTER);
@@ -60,7 +95,7 @@ function setup() {
   textSize(24);
 
   // set to one for startup
-  drawFunction = drawOne;
+  drawFunction = functions[5];
 }
 
 // Very simple, sets the background color and calls your state machine function
@@ -118,6 +153,14 @@ drawSplash = function() {
    image(images[5],width/2, height/2);
 }
 
+// this will display instructions screen
+drawInstructions = function() {
+  for( let i = 0; i < instructions.length; i++ ) {
+    fill(colors[i]); 
+    text( instructions[i], midX, startY + (i * lineHeight) )
+  }
+}
+
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
   if( drawFunction === drawSplash ) {
@@ -125,30 +168,32 @@ function keyTyped() {
   }
 
   if( key === '1' ) {
-  	drawFunction = drawOne;
+  	drawFunction = functions[0];
   }
   else if( key === '2' ) {
-  	drawFunction = drawTwo;
+  	drawFunction = functions[1];
   }
   else if( key === '3' ) {
-  	drawFunction = drawThree;
+  	drawFunction = functions[2];
   }
   else if( key === '4' ) {
-  	drawFunction = drawFour;
+  	drawFunction = functions[3];
   }
   else if( key === '5' ) {
-  	drawFunction = drawFive;
+  	drawFunction = functions[4];
   }
-
-  else if( key === 's' ) {
-    drawFunction = drawSplash;
+  else if( key == 's') {
+    drawFunction = functions[5]; 
+  }
+  else if( key == 'i') {
+    drawFunction = functions[6]; 
   }
 }
 
 function mousePressed() {
   // only change state if we are in splash screen
   if( drawFunction === drawSplash ) {
-    drawFunction = drawOne;
+    drawFunction = functions[6];
   }
 }
 
